@@ -144,8 +144,8 @@ describe Savon::WSDLRequest do
           globals.ssl_cert_key_file(key)
 
           new_wsdl_request.build
-
-          expect(http_request.auth.ssl.cert_key.to_s).to match(/BEGIN RSA PRIVATE KEY/)
+          OpenSSL::PKey.read(File.read(key), pass)
+          expect(http_request.auth.ssl.cert_key_file.to_s).to match(/BEGIN RSA PRIVATE KEY/)
         end
       end
     end

@@ -16,4 +16,5 @@ end
 
 platform :jruby do
   gem 'json'
+  gem 'rubyntlm'
 end
